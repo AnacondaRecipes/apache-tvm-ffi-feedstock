@@ -1,53 +1,53 @@
-schema_version: 1
-
-context:
-  name: apache-tvm-ffi
-  version: "0.1.9"
+{% set name="apache-tvm-ffi" %}
+{% set version="0.1.9" %}
 
 package:
-  name: ${{ name }}
-  version: ${{ version }}
+  name: {{ name }}
+  version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name | replace("-", "_") }}-${{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace("-", "_") }}-{{ version }}.tar.gz
   sha256: d2d402587e8906de0a07f4746aa78f3d452c7efe3625d4bb39ac2ad693bce530
 
 build:
   number: 0
-  skip:
-    - win
+  skip: true # [win]
   script:
-    - export SETUPTOOLS_SCM_PRETEND_VERSION=${{ version }}
-    - python -m pip install . -vv
+    - export SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   build:
-    - if: build_platform != host_platform
-      then:
-        - python
-        - cross-python_${{ host_platform }}
-        - cython
-    - ${{ compiler('c') }}
-    - ${{ compiler('cxx') }}
-    - ${{ stdlib('c') }}
+
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
     - cmake
     - ninja
     - make
+    - scikit-build-core >=0.10.0
+    - setuptools-scm
+    - cython >=3.0
+    - wheel
+    - pip
   host:
     - python
     - pip
     - scikit-build-core >=0.10.0
     - cython >=3.0
+    - setuptools
     - setuptools-scm
   run:
     - python
     - typing-extensions >=4.5
 
-tests:
-  - python:
-      imports:
+test:
+  imports:
         - tvm_ffi
-      pip_check: true
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   homepage: https://github.com/apache/tvm-ffi
