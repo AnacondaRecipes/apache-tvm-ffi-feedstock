@@ -27,13 +27,8 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ stdlib('c') }}
     - cmake
-    - ninja
+    - ninja-base
     - make
-    - scikit-build-core >=0.10.0
-    - setuptools-scm
-    - cython >=3.0
-    - wheel
-    - pip
   host:
     - python
     - pip
