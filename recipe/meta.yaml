@@ -42,7 +42,7 @@ requirements:
 
 test:
   imports:
-        - tvm_ffi
+    - tvm_ffi
   requires:
     - pip
   commands:
