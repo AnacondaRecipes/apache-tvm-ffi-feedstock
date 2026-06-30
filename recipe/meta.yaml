@@ -29,7 +29,7 @@ requirements:
     - {{ stdlib('c') }}
     - cmake
     - ninja-base
-    - make
+    - make # [not win]
   host:
     - python
     - pip
