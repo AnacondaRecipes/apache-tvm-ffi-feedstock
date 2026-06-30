@@ -37,7 +37,6 @@ requirements:
     - {{ stdlib('c') }}
     - cmake
     - ninja-base
-    #- make # [not win]
   host:
     - python
     - pip
