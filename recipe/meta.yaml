@@ -14,7 +14,7 @@ source:
 
 build:
   number: {{ build_num }}
-  skip: true 
+  #skip: true # [win]
   entry_points:
     - tvm-ffi-config = tvm_ffi.config:__main__
     - tvm-ffi-stubgen = tvm_ffi.stub.cli:__main__
