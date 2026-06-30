@@ -23,6 +23,13 @@ build:
     - export SETUPTOOLS_SCM_PRETEND_VERSION={{ version }} # [unix]
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
+  # On Windows, the DSO check fails for tvm_ffi.dll and tvm_ffi_testing.dll because the libraries
+  # aren't in the expected locations, however, these are loaded through tvm_ffi's special loading
+  # mechanism that looks in the correct directories for them.
+  missing_dso_whitelist: # [win]
+    - "**/tvm_ffi.dll" # [win]
+    - "**/tvm_ffi_testing.dll" # [win]
+
 requirements:
   build:
     - {{ compiler('c') }}
