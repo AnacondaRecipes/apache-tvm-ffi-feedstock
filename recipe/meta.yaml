@@ -19,8 +19,6 @@ build:
     - tvm-ffi-config = tvm_ffi.config:__main__
     - tvm-ffi-stubgen = tvm_ffi.stub.cli:__main__
   script:
-    - set SETUPTOOLS_SCM_PRETEND_VERSION={{ version }} # [win]
-    - export SETUPTOOLS_SCM_PRETEND_VERSION={{ version }} # [unix]
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
   # On Windows, the DSO check fails for tvm_ffi.dll and tvm_ffi_testing.dll because the libraries
