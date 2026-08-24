@@ -2,6 +2,7 @@
 {% set version="0.1.10" %}
 {% set build_num=0 %}
 
+
 package:
   name: apache-tvm-ffi
   version: {{ version }}
@@ -27,6 +28,9 @@ build:
   missing_dso_whitelist: # [win]
     - "**/tvm_ffi.dll" # [win]
     - "**/tvm_ffi_testing.dll" # [win]
+  run_exports:
+    strong:
+      apache-tvm-ffi =={{ version }}
 
 requirements:
   build:
