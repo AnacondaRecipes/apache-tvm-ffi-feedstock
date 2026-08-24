@@ -1,6 +1,6 @@
 {% set name="apache-tvm-ffi" %}
-{% set version="0.1.9" %}
-{% set build_num=1 %}
+{% set version="0.1.10" %}
+{% set build_num=0 %}
 
 package:
   name: apache-tvm-ffi
@@ -8,8 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace("-", "_") }}-{{ version }}.tar.gz
-  sha256: d2d402587e8906de0a07f4746aa78f3d452c7efe3625d4bb39ac2ad693bce530
-
+  sha256: 974c208766c304c780c17c6d405449e862f83b22c7b6b2b8c28b29d55a806ae3 
 
 
 build:
