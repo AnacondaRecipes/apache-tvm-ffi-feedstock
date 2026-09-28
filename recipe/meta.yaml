@@ -41,11 +41,11 @@ requirements:
     - python
     - pip
     - scikit-build-core >=0.10.0
-    - cython >=3.2.8
+    - cython >=3.0.0
     - setuptools-scm
   run:
     - python
-    - typing-extensions >=4.13
+    - typing-extensions >=4.5
 
 test:
   imports:
