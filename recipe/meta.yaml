@@ -41,7 +41,7 @@ requirements:
     - python
     - pip
     - scikit-build-core >=0.10.0
-    - cython >=3.0.0
+    - cython >=3.0
     - setuptools-scm
   run:
     - python
